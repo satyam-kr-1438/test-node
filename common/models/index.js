@@ -2,14 +2,15 @@ const { Sequelize } = require("sequelize");
 
 // const sequelize = new Sequelize(
 const sequelize = new Sequelize(
-  "common",
- "postgres",
-  "aXx9jvzcArv0g7tjuIMs",
+  process.env.DB_NAME || "testerika_production",
+  process.env.DB_USER || "testerika_prod_user",
+  process.env.DB_PASSWORD || "TestProd2024Secure",
   {
     dialect: "postgres",
-    host: "testerika-production.cahldwhzztzg.ap-south-1.rds.amazonaws.com",
+    host: process.env.DB_HOST || "localhost",
     port: 5432,
-    database: "common",
+    database: process.env.DB_NAME || "testerika_production",
+    logging: false
   }
 );
 

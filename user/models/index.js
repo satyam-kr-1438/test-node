@@ -14,16 +14,15 @@ const { Sequelize } = require("sequelize");
 
 //production
 const sequelize = new Sequelize(
-  process.env.DB_SCHEMA || "user",
- "postgres",
-  process.env.DB_PASSWORD || "aXx9jvzcArv0g7tjuIMs",
+  process.env.DB_NAME || "testerika_production",
+  process.env.DB_USER || "testerika_prod_user",
+  process.env.DB_PASSWORD || "TestProd2024Secure",
   {
     dialect: "postgres",
-    host:
-      process.env.DB_HOST ||
-      "testerika-production.cahldwhzztzg.ap-south-1.rds.amazonaws.com",
+    host: process.env.DB_HOST || "localhost",
     port: 5432,
-    database: process.env.DB_SCHEMA || "user",
+    database: process.env.DB_NAME || "testerika_production",
+    logging: false
   }
 );
 
