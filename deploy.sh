@@ -1,17 +1,25 @@
 #!/bin/bash
-# SIMPLE DEPLOYMENT SCRIPT FOR TESTERIKA MICROSERVICES
-# Run this on EC2 after pushing updated code to GitHub
+# FIRST TIME DEPLOYMENT SCRIPT FOR TESTERIKA MICROSERVICES
+# ⚠️ WARNING: This script creates fresh database and deletes existing data
+# Use this ONLY for first time deployment
 
-echo "🚀 Starting Testerika Deployment..."
+echo "🚀 Starting Testerika FIRST TIME Deployment..."
+echo "⚠️ WARNING: This will create fresh database and delete existing data"
+read -p "Continue? (y/N): " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+    echo "Deployment cancelled"
+    exit 1
+fi
 
 # Go to ubuntu home
 cd /home/ubuntu
 
 # Clean previous deployment
-sudo rm -rf testerika-microservices 2>/dev/null
+sudo rm -rf test-node 2>/dev/null
 pm2 delete all 2>/dev/null
 
-# Setup database (one time)
+# Setup database (FRESH - DELETES DATA)
 sudo -u postgres psql << 'EOF'
 DROP DATABASE IF EXISTS testerika_production;
 DROP USER IF EXISTS testerika_prod_user;
@@ -22,8 +30,8 @@ GRANT ALL PRIVILEGES ON DATABASE testerika_production TO testerika_prod_user;
 EOF
 
 # Clone your updated repository
-git clone https://github.com/satyam-kr-1438/testerika-microservices.git
-cd testerika-microservices
+git clone https://github.com/satyam-kr-1438/test-node.git
+cd test-node
 
 # Create environment files for each service
 for service in user common quiz question packages wallet; do
