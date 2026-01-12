@@ -4,10 +4,10 @@ const JWT=require("jsonwebtoken")
 // const API_URL_PAYMENT="http://localhost:6006/api/conferenceQuiz/quiz/payment-gateway"
 // const API_URL_QUIZ="http://localhost:6006/api/conferenceQuiz/quiz"
 // const COMMON_URL="http://localhost:6008/api/common"
-const API_URL="https://api.testcontrolcenter.com/api/common/option"
-const API_URL_PAYMENT="https://api.testcontrolcenter.com/api/conferenceQuiz/quiz/payment-gateway"
-const API_URL_QUIZ="https://api.testcontrolcenter.com/api/conferenceQuiz/quiz"
-const COMMON_URL="https://api.testcontrolcenter.com/api/common"
+const API_URL="https://api.testerika.com/api/common/option"
+const API_URL_PAYMENT="https://api.testerika.com/api/conferenceQuiz/quiz/payment-gateway"
+const API_URL_QUIZ="https://api.testerika.com/api/conferenceQuiz/quiz"
+const COMMON_URL="https://api.testerika.com/api/common"
 
 
 const hashPassword=async (password)=>{
