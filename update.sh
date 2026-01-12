@@ -11,8 +11,9 @@ fi
 
 cd /home/ubuntu/test-node
 
-# Pull latest code
+# Handle local changes and pull latest code
 echo "📥 Pulling latest code..."
+git stash
 git pull origin main
 if [ $? -ne 0 ]; then
     echo "❌ Git pull failed"
